@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="arrow_back.png" />
+    <None Remove="arrow_left_q.png" />
+    <None Remove="arrow_right_q.png" />
+    <None Remove="Background.png" />
+    <None Remove="icons_dos.png" />
+    <None Remove="quiz_one.png" />
+    <None Remove="quiz_two.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite.Core" Version="8.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="arrow_back.png" />
+    <Resource Include="arrow_left_q.png" />
+    <Resource Include="arrow_right_q.png" />
+    <Resource Include="Background.png" />
+    <Resource Include="icons_dos.png" />
+    <Resource Include="quiz_one.png" />
+    <Resource Include="quiz_two.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,235 @@
+﻿<Window x:Class="Quizrunner.CreateTest"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Quizrunner"
+        mc:Ignorable="d"
+        ResizeMode="NoResize"
+        Title="QuizRunner" Height="760" Width="1130"  
+        AutomationProperties.Name="CreateTest">
+
+    <Window.Background>
+        <ImageBrush ImageSource="/Background.png"/>
+    </Window.Background>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="205*"/>
+            <RowDefinition Height="167*"/>
+        </Grid.RowDefinitions>
+        <Label Content="Создать новый тест" HorizontalAlignment="Center" Margin="0,26,0,0" VerticalAlignment="Top" FontFamily="Bahnschrift" FontSize="28" FontWeight="Bold"/>
+        <Label x:Name="Name_test" Content="Название теста" HorizontalAlignment="Left" Margin="43,172,0,0" VerticalAlignment="Top" FontSize="22" FontFamily="Accia Sans"/>
+        <DockPanel Grid.RowSpan="2">
+            <TextBox x:Name="InputTestName" Padding="5 0 0 0" SpellCheck.IsEnabled="True" VerticalContentAlignment="Center" Language="ru-ru" HorizontalAlignment="Left"  Margin="386,181,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="368" Height="27">
+                <TextBox.Style>
+                    <Style TargetType="TextBox"  xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                        <Style.Resources>
+                            <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Top" Stretch="None">
+                                <VisualBrush.Visual>
+                                    <Label  Content="Введите название теста" Padding="5, 5, 0, 0 " Foreground="Gray" />
+                                </VisualBrush.Visual>
+                            </VisualBrush>
+                        </Style.Resources>
+                        <Style.Triggers>
+                            <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="Text" Value="{x:Null}">
+                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                <Setter Property="Background" Value="White" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+                <TextBox.Resources>
+
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="5"/>
+
+                    </Style>
+                </TextBox.Resources>
+            </TextBox>
+        </DockPanel>
+        <Button AutomationProperties.AutomationId="CreateTestClick" x:Name="NameInputButton" Content="Создать тест" HorizontalAlignment="Left" Margin="830,181,0,0" VerticalAlignment="Top" Height="27
+                " Width="108" Click="PressInputNameButton" Background="#FF7571C5" FontFamily="Bodoni MT" FontSize="14"/>
+        <Label x:Name="Kl_question" Visibility="Hidden" Content="Количество вопросов" HorizontalAlignment="Left" Margin="43,299,0,0" VerticalAlignment="Top" Height="37" Width="243" FontSize="22" FontFamily="Accia Sans">
+            <UIElement.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </UIElement.RenderTransform>
+        </Label>
+
+        <ComboBox x:Name="SelectNumberQuestions" Visibility="Hidden"   HorizontalAlignment="Left" Margin="386,307,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBox_SelectionChanged" IsSynchronizedWithCurrentItem="False">
+            <Label Content="1" Width="110" ></Label>
+            <Label Content="2" Width="110" ></Label>
+            <Label Content="3" Width="110" ></Label>
+            <Label Content="4" Width="110" ></Label>
+            <Label Content="5" Width="110" ></Label>
+            <Label Content="6" Width="110" ></Label>
+            <Label Content="7" Width="110" ></Label>
+            <Label Content="8" Width="110" ></Label>
+            <Label Content="9" Width="110" ></Label>
+            <Label Content="10" Width="110" ></Label>
+            <Label Content="11" Width="110" ></Label>
+            <Label Content="12" Width="110" ></Label>
+            <Label Content="13" Width="110" ></Label>
+            <Label Content="14" Width="110" ></Label>
+            <Label Content="15" Width="110" ></Label>
+        </ComboBox>
+        <ComboBox x:Name="combobox_select" Visibility="Hidden"  SelectionChanged="Combobox_ch_2" HorizontalAlignment="Left" Margin="386,389,0,0" VerticalAlignment="Top" Width="120" Grid.RowSpan="2" >
+            <Label></Label>
+        </ComboBox>
+        <Label x:Name="Choose_num_question" Visibility="Hidden" Content="Выбирите номер вопроса" HorizontalAlignment="Left" Margin="43,380,0,0" VerticalAlignment="Top" Width="290" FontSize="22" Grid.RowSpan="2"/>
+        <DockPanel Grid.RowSpan="2">
+            <TextBox x:Name="Namequestion" Visibility="Hidden" HorizontalAlignment="Left" SpellCheck.IsEnabled="True" Padding="15, 8"  Language="ru-ru"  Margin="43,471,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="463" Height="82" >
+                <TextBox.Style>
+                    <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                        <Style.Resources>
+                            <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Top" Stretch="None">
+                                <VisualBrush.Visual>
+                                    <Label Content="Введите свой вопрос" Padding="15, 8 " Foreground="Gray" />
+                                </VisualBrush.Visual>
+                            </VisualBrush>
+                        </Style.Resources>
+                        <Style.Triggers>
+                            <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="Text" Value="{x:Null}">
+                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                <Setter Property="Background" Value="White" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+                <TextBox.Resources>
+
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="20"/>
+
+                    </Style>
+                </TextBox.Resources>
+            </TextBox>
+
+        </DockPanel>
+        <Label x:Name="InputAns" Content="Label" Width="0"/>
+        <Label x:Name="title_manage" Visibility="Hidden" Content="Введите Ответы на вопросы:" Height="30" Margin="752,401,205,313" Grid.RowSpan="2"/>
+        <TextBox x:Name="Answer_one" Visibility="Hidden" TextWrapping="Wrap" Margin="599,45,314,249" Grid.Row="2">
+            <TextBox.Style>
+                <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                    <Style.Resources>
+                        <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Top" Stretch="None">
+                            <VisualBrush.Visual>
+                                <Label Content="Введите ответ на вопрос..." Padding="5, 5, 0, 0 " Foreground="Gray" />
+                            </VisualBrush.Visual>
+                        </VisualBrush>
+                    </Style.Resources>
+                    <Style.Triggers>
+                        <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                            <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                        </Trigger>
+                        <Trigger Property="Text" Value="{x:Null}">
+                            <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter Property="Background" Value="White" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBox.Style>
+        </TextBox>
+        <TextBox x:Name="Answer_four" Visibility="Hidden" TextWrapping="Wrap" Margin="860,127,53,167" Grid.Row="2">
+            <TextBox.Style>
+                <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                    <Style.Resources>
+                        <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Top" Stretch="None">
+                            <VisualBrush.Visual>
+                                <Label Content="Введите ответ на вопрос..." Padding="5, 5, 0, 0 " Foreground="Gray" />
+                            </VisualBrush.Visual>
+                        </VisualBrush>
+                    </Style.Resources>
+                    <Style.Triggers>
+                        <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                            <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                        </Trigger>
+                        <Trigger Property="Text" Value="{x:Null}">
+                            <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter Property="Background" Value="White" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBox.Style>
+        </TextBox>
+        <TextBox x:Name="Answer_two" Visibility="Hidden" TextWrapping="Wrap" Margin="860,45,53,249" Grid.Row="2">
+            <TextBox.Style>
+                <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                    <Style.Resources>
+                        <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Top" Stretch="None">
+                            <VisualBrush.Visual>
+                                <Label Content="Введите ответ на вопрос..." Padding="5, 5, 0, 0 " Foreground="Gray" />
+                            </VisualBrush.Visual>
+                        </VisualBrush>
+                    </Style.Resources>
+                    <Style.Triggers>
+                        <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                            <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                        </Trigger>
+                        <Trigger Property="Text" Value="{x:Null}">
+                            <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter Property="Background" Value="White" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBox.Style>
+        </TextBox>
+        <TextBox x:Name="Answer_three" Visibility="Hidden" TextWrapping="Wrap" Margin="599,127,314,167" Grid.Row="2">
+            <TextBox.Style>
+                <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                    <Style.Resources>
+                        <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Top" Stretch="None">
+                            <VisualBrush.Visual>
+                                <Label Content="Введите ответ на вопрос..." Padding="5, 5, 0, 0 " Foreground="Gray" />
+                            </VisualBrush.Visual>
+                        </VisualBrush>
+                    </Style.Resources>
+                    <Style.Triggers>
+                        <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                            <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                        </Trigger>
+                        <Trigger Property="Text" Value="{x:Null}">
+                            <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter Property="Background" Value="White" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBox.Style>
+        </TextBox>
+        <CheckBox x:Name="Check_Answer_one"  Visibility="Hidden"  Content="CheckBox" HorizontalAlignment="Left" Height="20" Margin="779,55,0,0" Grid.Row="1" VerticalAlignment="Top" Width="18" RenderTransformOrigin="-0.392,-0.649"/>
+        <CheckBox x:Name="Check_Answer_three" Visibility="Hidden" Content="CheckBox" HorizontalAlignment="Left" Height="20" Margin="779,137,0,0" Grid.Row="1" VerticalAlignment="Top" Width="16" RenderTransformOrigin="-0.392,-0.649"/>
+        <CheckBox x:Name="Check_Answer_four" Visibility="Hidden" Content="CheckBox" HorizontalAlignment="Left" Height="20" Margin="1043,137,0,0" Grid.Row="2" VerticalAlignment="Top" Width="16" RenderTransformOrigin="-0.392,-0.649"/>
+        <CheckBox x:Name="Check_Answer_two" Visibility="Hidden" Content="CheckBox" HorizontalAlignment="Left" Height="20" Margin="1043,55,0,0" Grid.Row="2" VerticalAlignment="Top" Width="16" RenderTransformOrigin="-0.392,-0.649"/>
+
+
+        <Button AutomationProperties.AutomationId="createQuestion" x:Name="Createq" Visibility="Hidden" Content="Создать вопрос" HorizontalAlignment="Left" Margin="488,202,0,0"  VerticalAlignment="Top" Width="104" Click="PressCreateq" Grid.Row="1"/>
+        <Button AutomationProperties.AutomationId="goBack" Margin="10,10,1082,354" Background="Snow" BorderBrush="Snow" Click="Button_Click">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="/arrow_back.png" Width="20" Height="20"/>
+
+            </StackPanel>
+        </Button>
+    </Grid>
+</Window>
